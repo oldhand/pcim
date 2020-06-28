@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+    <ListContainerElement height="auto">
+        <VBox height="auto">
+            <Button name="CELL_BTN_LOAD_MORE_MSG" halign="center" cursortype="hand" normaltextcolor="darkcolor" textid="STRID_SESSION_CLICK_SEE_MORE_MSG"/>
+        </VBox>
+    </ListContainerElement>
+</Window>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+    <VListBox class="menu">
+        <MenuElement class="MenuElement" name="kick" width="170" height="24" tooltiptextid="STRID_CHATROOM_MENU_KICK_TIP">
+            <Label class="menu_text" textid="STRID_CHATROOM_MENU_KICK" />
+        </MenuElement>
+        <MenuElement class="MenuElement" name="addmute" width="170" height="24" tooltiptextid="STRID_CHATROOM_MENU_MUTE_TIP" visible="false">
+            <Label class="menu_text" textid="STRID_CHATROOM_MENU_MUTE" />
+        </MenuElement>
+        <MenuElement class="MenuElement" name="removemute" width="170" height="24" visible="false">
+            <Label class="menu_text" textid="STRID_CHATROOM_MENU_UNMUTE" />
+        </MenuElement>
+        <MenuElement class="MenuElement" name="addblacklist" width="170" height="24" tooltiptextid="STRID_CHATROOM_MENU_ADD_BLACK_TIP" visible="false">
+            <Label class="menu_text" textid="STRID_CHATROOM_MENU_ADD_BLACK" />
+        </MenuElement>
+        <MenuElement class="MenuElement" name="removeblacklist" width="170" height="24" visible="false">
+            <Label class="menu_text" textid="STRID_CHATROOM_MENU_REMOVE_BLACK" />
+        </MenuElement>
+        <MenuElement class="MenuElement" name="addadmin" width="170" height="24" visible="false">
+            <Label class="menu_text" textid="STRID_CHATROOM_MENU_ADD_ADMIN" />
+        </MenuElement>
+        <MenuElement class="MenuElement" name="removeadmin" width="170" height="24" visible="false">
+            <Label class="menu_text" textid="STRID_CHATROOM_MENU_REMOVE_ADMIN" />
+        </MenuElement>
+        <MenuElement class="MenuElement" name="tempmute" width="170" height="24" visible="false">
+            <Label class="menu_text" textid="STRID_CHATROOM_MENU_TEMP_MUTE" />
+        </MenuElement>
+        <MenuElement class="MenuElement" name="tempunmute" width="170" height="24" visible="false">
+            <Label class="menu_text" textid="STRID_CHATROOM_MENU_TEMP_UNMUTE" />
+        </MenuElement>
+    </VListBox>
+</Window>

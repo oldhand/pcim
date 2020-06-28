@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Window>
+    <ListContainerElement height="40">
+        <HBox padding="20,0,20,0" >
+            <Label class="font_title" name="multi_des" width="stretch" valign="center" normaltextcolor="darkcolor" textid="STRID_MULTISPOT_NIM_MOBILEPHONE_CLIENT"/>
+            <Button name="kick" valign="center" cursortype="hand" font="1" normaltextcolor="btn_green" textid="STRID_MULTISPOT_KICK" />
+        </HBox>
+        <Control class="splitline_hor_level1" name="split_line" valign="bottom"/>
+    </ListContainerElement>
+</Window>

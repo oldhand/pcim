@@ -1,0 +1,874 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{d862b916-980a-460f-8d5b-4f728aa5f1eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\config">
+      <UniqueIdentifier>{314d01ad-3c06-4bf2-bb69-99fb7fcaf5aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\db">
+      <UniqueIdentifier>{aa531814-8042-402c-89e9-8b521fcb630c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pages">
+      <UniqueIdentifier>{3230c9dd-fbef-49fb-b687-2ea8da2c908d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pages\tray_icon">
+      <UniqueIdentifier>{4c6c2892-4387-4f04-b563-68c852518243}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="services">
+      <UniqueIdentifier>{3da78480-e2c4-404c-9eac-c661d112f077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pages\others">
+      <UniqueIdentifier>{4f78e1c8-3252-409f-bb1d-b44a8f91872e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugins">
+      <UniqueIdentifier>{340c814c-4ab4-4687-b1e1-f1f916275a49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugins\contact">
+      <UniqueIdentifier>{fa5d67a3-4861-4122-9323-312b4bdb3493}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui">
+      <UniqueIdentifier>{8cb7b53c-a95f-463e-9a51-dfa0a5093d3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\profile_form">
+      <UniqueIdentifier>{49b21a0d-233e-4302-bf22-b0fd3378b925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\main">
+      <UniqueIdentifier>{4c32a9b5-9268-49c2-ac89-57efc8c60daa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pages\control">
+      <UniqueIdentifier>{478ab421-0527-4872-a464-b2b28607b507}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugins\session">
+      <UniqueIdentifier>{02bca7f9-da90-4e56-a2a2-c1ee001145e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugins\team">
+      <UniqueIdentifier>{6fa0e786-fb20-436a-8e9b-0ff97d0470ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\emoji">
+      <UniqueIdentifier>{ea174d22-b40e-49ab-a6b3-45b6b2a57fb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\extern_ctrl">
+      <UniqueIdentifier>{40142028-4489-4359-a1f0-817ae5c96359}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\extern_ctrl\treectrl">
+      <UniqueIdentifier>{cd38cb70-62fa-4745-967f-2855f8c7cbf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\session">
+      <UniqueIdentifier>{405bfee6-9705-4581-a101-13129a7a3e62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\subscribe_event">
+      <UniqueIdentifier>{2c4d88ee-0af7-460f-bac2-e0f6a3ec51a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\team_info">
+      <UniqueIdentifier>{6fca48cc-2d97-4a7a-8ce3-25c3fd8a0af9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\session\atlist">
+      <UniqueIdentifier>{8d1e33ba-9a65-45f2-881f-394f27eea461}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\session\control">
+      <UniqueIdentifier>{3eb9c430-4e86-4ea8-8c66-3f4ce583895f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\session\dragdrop">
+      <UniqueIdentifier>{d695242c-5233-4134-8edb-6f1745217364}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\session\taskbar">
+      <UniqueIdentifier>{5b219d53-9741-4e6f-beaf-c40b26e623d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\session\control\bubbles">
+      <UniqueIdentifier>{bbeda7db-fffa-49a2-b6df-2669669c2e26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="apis">
+      <UniqueIdentifier>{2ac410ca-f286-4ee7-9d81-e45851af7269}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\link">
+      <UniqueIdentifier>{1b841f54-8854-472f-99dc-df28e92a0a38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pages\async">
+      <UniqueIdentifier>{82a57976-32e2-40a2-8935-903b977d9efb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="apis\models">
+      <UniqueIdentifier>{0ad1bd65-eca3-4097-bce6-05ac2cf0156c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="apis\db">
+      <UniqueIdentifier>{b85a0d49-77f6-4abe-ba67-17335b5b0bf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\thread">
+      <UniqueIdentifier>{d3c9fb4e-4272-401c-aba3-5526014c5b51}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Env.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\login_form.h">
+      <Filter>pages</Filter>
+    </ClInclude>
+    <ClInclude Include="common\config\config_helper.h">
+      <Filter>common\config</Filter>
+    </ClInclude>
+    <ClInclude Include="common\db\public_db.h">
+      <Filter>common\db</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\main_form_ex.h">
+      <Filter>pages</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\main_form_menu.h">
+      <Filter>pages</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\tray_icon\tray_icon_manager.h">
+      <Filter>pages\tray_icon</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\tray_icon\ui_kit_tray_icon.h">
+      <Filter>pages\tray_icon</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\pop_main_menu.h">
+      <Filter>pages</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\ui_window_manager.h">
+      <Filter>pages</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\ui_login_manager.h">
+      <Filter>pages</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\login_callback.h">
+      <Filter>pages</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\login_manager.h">
+      <Filter>pages</Filter>
+    </ClInclude>
+    <ClInclude Include="defines.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="services\notify_center.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\others\about_form.h">
+      <Filter>pages\others</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\main_plugins_base.h">
+      <Filter>plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\main_plugins_manager.h">
+      <Filter>plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\contact\contact_plugin.h">
+      <Filter>plugins\contact</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\contact\contact_plugin_page.h">
+      <Filter>plugins\contact</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\contact\nim_cpp_friend.h">
+      <Filter>plugins\contact</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\contact\nim_cpp_user.h">
+      <Filter>plugins\contact</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\contact\nim_friend_helper.h">
+      <Filter>plugins\contact</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\contact\nim_tool_helper.h">
+      <Filter>plugins\contact</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\contact\nim_ui_contacts_list_manager.h">
+      <Filter>plugins\contact</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\contact\nim_user_helper.h">
+      <Filter>plugins\contact</Filter>
+    </ClInclude>
+    <ClInclude Include="services\photo_service.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include="services\session_service.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include="services\team_service.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include="services\user_service.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\profile_form\iprofile_ui.h">
+      <Filter>gui\profile_form</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\profile_form\profile_box.h">
+      <Filter>gui\profile_form</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\profile_form\profile_form.h">
+      <Filter>gui\profile_form</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\main\friend_list.h">
+      <Filter>gui\main</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\main\group_list.h">
+      <Filter>gui\main</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\main\session_list.h">
+      <Filter>gui\main</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\control\custom_button_box.h">
+      <Filter>pages\control</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\control\friend_item.h">
+      <Filter>pages\control</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\control\session_item.h">
+      <Filter>pages\control</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\session\nim_cpp_msglog.h">
+      <Filter>plugins\session</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\session\nim_cpp_session.h">
+      <Filter>plugins\session</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\session\nim_msglog_helper.h">
+      <Filter>plugins\session</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\session\nim_session_def.h">
+      <Filter>plugins\session</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\session\nim_session_helper.h">
+      <Filter>plugins\session</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\session\nim_talk_helper.h">
+      <Filter>plugins\session</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\session\nim_ui_session_list_manager.h">
+      <Filter>plugins\session</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\session\nim_ui_session_manager.h">
+      <Filter>plugins\session</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\session\session_plugin.h">
+      <Filter>plugins\session</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\session\session_plugin_icon.h">
+      <Filter>plugins\session</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\session\session_plugin_page.h">
+      <Filter>plugins\session</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\team\nim_sysmsg_helper.h">
+      <Filter>plugins\team</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\team\nim_team_helper.h">
+      <Filter>plugins\team</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\team\team_callback.h">
+      <Filter>plugins\team</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\team\team_plugin.h">
+      <Filter>plugins\team</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\team\team_plugin_page.h">
+      <Filter>plugins\team</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\emoji\emoji_form.h">
+      <Filter>gui\emoji</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\emoji\emoji_info.h">
+      <Filter>gui\emoji</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\emoji\richedit_olecallback.h">
+      <Filter>gui\emoji</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\emoji\richedit_util.h">
+      <Filter>gui\emoji</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\extern_ctrl\extern_ctrl_manager.h">
+      <Filter>gui\extern_ctrl</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\extern_ctrl\richedit_with_defmenu.h">
+      <Filter>gui\extern_ctrl</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\extern_ctrl\richedit_with_defmenu_btnimp.h">
+      <Filter>gui\extern_ctrl</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\extern_ctrl\treectrl\treectrl_interface.h">
+      <Filter>gui\extern_ctrl\treectrl</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\extern_ctrl\treectrl\treedoc.h">
+      <Filter>gui\extern_ctrl\treectrl</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\extern_ctrl\treectrl\treeitem.h">
+      <Filter>gui\extern_ctrl\treectrl</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\extern_ctrl\treectrl\treeitem_uistyle.h">
+      <Filter>gui\extern_ctrl\treectrl</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\extern_ctrl\treectrl\treeview.h">
+      <Filter>gui\extern_ctrl\treectrl</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\team_info\team_info.h">
+      <Filter>gui\team_info</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\team_info\team_info_box.h">
+      <Filter>gui\team_info</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\subscribe_event\nim_subscribe_event_helper.h">
+      <Filter>gui\subscribe_event</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\subscribe_event\online_state_event_helper.h">
+      <Filter>gui\subscribe_event</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\subscribe_event\subscribe_event_manager.h">
+      <Filter>gui\subscribe_event</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\session_box.h">
+      <Filter>gui\session</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\session_callback.h">
+      <Filter>gui\session</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\session_dock_def.h">
+      <Filter>gui\session</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\session_manager.h">
+      <Filter>gui\session</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\session_util.h">
+      <Filter>gui\session</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\atlist\at_list_form.h">
+      <Filter>gui\session\atlist</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\atlist\at_list_item.h">
+      <Filter>gui\session\atlist</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\atme_view.h">
+      <Filter>gui\session\control</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\team_item.h">
+      <Filter>gui\session\control</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\dragdrop\bitmap_control.h">
+      <Filter>gui\session\dragdrop</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\dragdrop\drag_drop.h">
+      <Filter>gui\session\dragdrop</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\dragdrop\drag_form.h">
+      <Filter>gui\session\dragdrop</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\taskbar\dwm_util.h">
+      <Filter>gui\session\taskbar</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\taskbar\taskbar_manager.h">
+      <Filter>gui\session\taskbar</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\bubbles\bubble_audio.h">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\bubbles\bubble_file.h">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\bubbles\bubble_finger.h">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\bubbles\bubble_image.h">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\bubbles\bubble_item.h">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\bubbles\bubble_location.h">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\bubbles\bubble_notice.h">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\bubbles\bubble_snapchat.h">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\bubbles\bubble_sticker.h">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\bubbles\bubble_text.h">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\bubbles\bubble_transferfile.h">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\bubbles\bubble_unknown.h">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\bubbles\bubble_video.h">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\session\control\bubbles\bubble_writing.h">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClInclude>
+    <ClInclude Include="apis\ProfileApi.h">
+      <Filter>apis</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\link\link_form.h">
+      <Filter>gui\link</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\async\async_form.h">
+      <Filter>pages\async</Filter>
+    </ClInclude>
+    <ClInclude Include="pages\async\async_manager.h">
+      <Filter>pages\async</Filter>
+    </ClInclude>
+    <ClInclude Include="apis\db\provider_db.h">
+      <Filter>apis\db</Filter>
+    </ClInclude>
+    <ClInclude Include="apis\db\sql.h">
+      <Filter>apis\db</Filter>
+    </ClInclude>
+    <ClInclude Include="apis\models\profile.h">
+      <Filter>apis\models</Filter>
+    </ClInclude>
+    <ClInclude Include="common\thread\db_thread.h">
+      <Filter>common\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="common\thread\misc_thread.h">
+      <Filter>common\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="apis\models\profilesetting.h">
+      <Filter>apis\models</Filter>
+    </ClInclude>
+    <ClInclude Include="apis\ContactApi.h">
+      <Filter>apis</Filter>
+    </ClInclude>
+    <ClInclude Include="apis\models\contact.h">
+      <Filter>apis\models</Filter>
+    </ClInclude>
+    <ClInclude Include="apis\models\group.h">
+      <Filter>apis\models</Filter>
+    </ClInclude>
+    <ClInclude Include="apis\GroupApi.h">
+      <Filter>apis</Filter>
+    </ClInclude>
+    <ClInclude Include="apis\models\groupprofile.h">
+      <Filter>apis\models</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\profile_form\head_modify_form.h">
+      <Filter>gui\profile_form</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\profile_form\ui_head_select_ctrl.h">
+      <Filter>gui\profile_form</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\profile_form\ui_head_view_ctrl.h">
+      <Filter>gui\profile_form</Filter>
+    </ClInclude>
+    <ClInclude Include="apis\models\all.h">
+      <Filter>apis\models</Filter>
+    </ClInclude>
+    <ClInclude Include="apis\all.h">
+      <Filter>apis</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Env.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\login_form.cpp">
+      <Filter>pages</Filter>
+    </ClCompile>
+    <ClCompile Include="common\config\config_helper.cpp">
+      <Filter>common\config</Filter>
+    </ClCompile>
+    <ClCompile Include="common\db\public_db.cpp">
+      <Filter>common\db</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\main_form_ex.cpp">
+      <Filter>pages</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\tray_icon\tray_icon_manager.cpp">
+      <Filter>pages\tray_icon</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\tray_icon\ui_kit_tray_icon.cpp">
+      <Filter>pages\tray_icon</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\pop_main_menu.cpp">
+      <Filter>pages</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\ui_window_manager.cpp">
+      <Filter>pages</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\ui_login_manager.cpp">
+      <Filter>pages</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\login_callback.cpp">
+      <Filter>pages</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\login_manager.cpp">
+      <Filter>pages</Filter>
+    </ClCompile>
+    <ClCompile Include="services\notify_center.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\others\about_form.cpp">
+      <Filter>pages\others</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\main_plugins_base.cpp">
+      <Filter>plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\main_plugins_manager.cpp">
+      <Filter>plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\contact\contact_plugin.cpp">
+      <Filter>plugins\contact</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\contact\contact_plugin_page.cpp">
+      <Filter>plugins\contact</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\contact\nim_cpp_friend.cpp">
+      <Filter>plugins\contact</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\contact\nim_cpp_user.cpp">
+      <Filter>plugins\contact</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\contact\nim_friend_helper.cpp">
+      <Filter>plugins\contact</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\contact\nim_tool_helper.cpp">
+      <Filter>plugins\contact</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\contact\nim_ui_contacts_list_manager.cpp">
+      <Filter>plugins\contact</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\contact\nim_user_helper.cpp">
+      <Filter>plugins\contact</Filter>
+    </ClCompile>
+    <ClCompile Include="services\photo_service.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="services\session_service.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="services\team_service.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="services\user_service.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\profile_form\profile_box.cpp">
+      <Filter>gui\profile_form</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\profile_form\profile_form.cpp">
+      <Filter>gui\profile_form</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\main\friend_list.cpp">
+      <Filter>gui\main</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\main\group_list.cpp">
+      <Filter>gui\main</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\main\session_list.cpp">
+      <Filter>gui\main</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\control\custom_button_box.cpp">
+      <Filter>pages\control</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\control\friend_item.cpp">
+      <Filter>pages\control</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\control\session_item.cpp">
+      <Filter>pages\control</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\session\nim_cpp_msglog.cpp">
+      <Filter>plugins\session</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\session\nim_cpp_session.cpp">
+      <Filter>plugins\session</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\session\nim_msglog_helper.cpp">
+      <Filter>plugins\session</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\session\nim_session_helper.cpp">
+      <Filter>plugins\session</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\session\nim_talk_helper.cpp">
+      <Filter>plugins\session</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\session\nim_ui_session_list_manager.cpp">
+      <Filter>plugins\session</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\session\nim_ui_session_manager.cpp">
+      <Filter>plugins\session</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\session\session_dock_imp.cpp">
+      <Filter>plugins\session</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\session\session_plugin.cpp">
+      <Filter>plugins\session</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\session\session_plugin_icon.cpp">
+      <Filter>plugins\session</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\session\session_plugin_page.cpp">
+      <Filter>plugins\session</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\team\nim_sysmsg_helper.cpp">
+      <Filter>plugins\team</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\team\nim_team_helper.cpp">
+      <Filter>plugins\team</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\team\team_callback.cpp">
+      <Filter>plugins\team</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\team\team_plugin.cpp">
+      <Filter>plugins\team</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\team\team_plugin_page.cpp">
+      <Filter>plugins\team</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\emoji\emoji_form.cpp">
+      <Filter>gui\emoji</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\emoji\emoji_info.cpp">
+      <Filter>gui\emoji</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\emoji\richedit_olecallback.cpp">
+      <Filter>gui\emoji</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\emoji\richedit_util.cpp">
+      <Filter>gui\emoji</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\extern_ctrl\extern_ctrl_manager.cpp">
+      <Filter>gui\extern_ctrl</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\extern_ctrl\richedit_with_defmenu.cpp">
+      <Filter>gui\extern_ctrl</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\extern_ctrl\richedit_with_defmenu_btnimp.cpp">
+      <Filter>gui\extern_ctrl</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\extern_ctrl\treectrl\treedoc.cpp">
+      <Filter>gui\extern_ctrl\treectrl</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\extern_ctrl\treectrl\treeitem.cpp">
+      <Filter>gui\extern_ctrl\treectrl</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\extern_ctrl\treectrl\treeitem_uistyle.cpp">
+      <Filter>gui\extern_ctrl\treectrl</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\extern_ctrl\treectrl\treeview.cpp">
+      <Filter>gui\extern_ctrl\treectrl</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\team_info\team_info.cpp">
+      <Filter>gui\team_info</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\team_info\team_info_box.cpp">
+      <Filter>gui\team_info</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\subscribe_event\nim_subscribe_event_helper.cpp">
+      <Filter>gui\subscribe_event</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\subscribe_event\online_state_event_helper.cpp">
+      <Filter>gui\subscribe_event</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\subscribe_event\subscribe_event_manager.cpp">
+      <Filter>gui\subscribe_event</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\session_box.cpp">
+      <Filter>gui\session</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\session_box_at.cpp">
+      <Filter>gui\session</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\session_box_audio.cpp">
+      <Filter>gui\session</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\session_box_dragdrop.cpp">
+      <Filter>gui\session</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\session_box_merge.cpp">
+      <Filter>gui\session</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\session_box_team.cpp">
+      <Filter>gui\session</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\session_box_ui.cpp">
+      <Filter>gui\session</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\session_callback.cpp">
+      <Filter>gui\session</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\session_dock_def.cpp">
+      <Filter>gui\session</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\session_manager.cpp">
+      <Filter>gui\session</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\session_manager_dragdrop.cpp">
+      <Filter>gui\session</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\session_util.cpp">
+      <Filter>gui\session</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\atlist\at_list_form.cpp">
+      <Filter>gui\session\atlist</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\atlist\at_list_item.cpp">
+      <Filter>gui\session\atlist</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\atme_view.cpp">
+      <Filter>gui\session\control</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\team_item.cpp">
+      <Filter>gui\session\control</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\dragdrop\bitmap_control.cpp">
+      <Filter>gui\session\dragdrop</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\dragdrop\drag_drop.cpp">
+      <Filter>gui\session\dragdrop</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\dragdrop\drag_form.cpp">
+      <Filter>gui\session\dragdrop</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\taskbar\dwm_util.cpp">
+      <Filter>gui\session\taskbar</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\taskbar\taskbar_manager.cpp">
+      <Filter>gui\session\taskbar</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\bubbles\bubble_audio.cpp">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\bubbles\bubble_file.cpp">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\bubbles\bubble_finger.cpp">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\bubbles\bubble_image.cpp">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\bubbles\bubble_item.cpp">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\bubbles\bubble_location.cpp">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\bubbles\bubble_notice.cpp">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\bubbles\bubble_snapchat.cpp">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\bubbles\bubble_sticker.cpp">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\bubbles\bubble_text.cpp">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\bubbles\bubble_transferfile.cpp">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\bubbles\bubble_unknown.cpp">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\bubbles\bubble_video.cpp">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\session\control\bubbles\bubble_writing.cpp">
+      <Filter>gui\session\control\bubbles</Filter>
+    </ClCompile>
+    <ClCompile Include="apis\ProfileApi.cpp">
+      <Filter>apis</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\link\link_form.cpp">
+      <Filter>gui\link</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\async\async_form.cpp">
+      <Filter>pages\async</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\async\async_manager.cpp">
+      <Filter>pages\async</Filter>
+    </ClCompile>
+    <ClCompile Include="apis\db\provider_db.cpp">
+      <Filter>apis\db</Filter>
+    </ClCompile>
+    <ClCompile Include="apis\db\sql.cpp">
+      <Filter>apis\db</Filter>
+    </ClCompile>
+    <ClCompile Include="apis\models\profile.cpp">
+      <Filter>apis\models</Filter>
+    </ClCompile>
+    <ClCompile Include="common\thread\db_thread.cpp">
+      <Filter>common\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="common\thread\misc_thread.cpp">
+      <Filter>common\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="apis\models\profilesetting.cpp">
+      <Filter>apis\models</Filter>
+    </ClCompile>
+    <ClCompile Include="apis\ContactApi.cpp">
+      <Filter>apis</Filter>
+    </ClCompile>
+    <ClCompile Include="apis\models\contact.cpp">
+      <Filter>apis\models</Filter>
+    </ClCompile>
+    <ClCompile Include="apis\models\group.cpp">
+      <Filter>apis\models</Filter>
+    </ClCompile>
+    <ClCompile Include="apis\GroupApi.cpp">
+      <Filter>apis</Filter>
+    </ClCompile>
+    <ClCompile Include="apis\models\groupprofile.cpp">
+      <Filter>apis\models</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\profile_form\head_modify_form.cpp">
+      <Filter>gui\profile_form</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\profile_form\ui_head_select_ctrl.cpp">
+      <Filter>gui\profile_form</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\profile_form\ui_head_view_ctrl.cpp">
+      <Filter>gui\profile_form</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="pcim.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="pcim.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\bin\resources.zip" />
+  </ItemGroup>
+</Project>
