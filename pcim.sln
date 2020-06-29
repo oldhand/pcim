@@ -14,6 +14,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "plugins", "plugins", "{D5D4C621-4C52-4A83-A2F6-877E5D2F91DD}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pcim", "pcim\pcim.vcxproj", "{F1A9371F-9A34-45A0-98EB-83FF371F067F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1} = {A063DFAD-6995-4E1A-AFFF-E43DC11E95B1}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "db", "plugins\db\db.vcxproj", "{745E6452-9FE1-435B-833A-767617EEE1DA}"
 EndProject
@@ -36,6 +39,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cpp_wrapper_util", "plugins\cpp_wrapper_util\cpp_wrapper_util.vcxproj", "{20F2845C-A2C7-42A2-99F9-52AE69BD6976}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cef_module", "plugins\cef_module\cef_module.vcxproj", "{5650F9C4-7DD0-4C23-BFC7-022D253ACBFA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "downloader", "plugins\downloader\downloader.vcxproj", "{C20D65CD-2BB3-4346-8109-FD1C47E7FBBB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pthread", "plugins\pthread\pthread.vcxproj", "{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -173,6 +180,22 @@ Global
 		{5650F9C4-7DD0-4C23-BFC7-022D253ACBFA}.Release|Win32.Build.0 = Release|Win32
 		{5650F9C4-7DD0-4C23-BFC7-022D253ACBFA}.Release|x64.ActiveCfg = Release|x64
 		{5650F9C4-7DD0-4C23-BFC7-022D253ACBFA}.Release|x64.Build.0 = Release|x64
+		{C20D65CD-2BB3-4346-8109-FD1C47E7FBBB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C20D65CD-2BB3-4346-8109-FD1C47E7FBBB}.Debug|Win32.Build.0 = Debug|Win32
+		{C20D65CD-2BB3-4346-8109-FD1C47E7FBBB}.Debug|x64.ActiveCfg = Debug|x64
+		{C20D65CD-2BB3-4346-8109-FD1C47E7FBBB}.Debug|x64.Build.0 = Debug|x64
+		{C20D65CD-2BB3-4346-8109-FD1C47E7FBBB}.Release|Win32.ActiveCfg = Release|Win32
+		{C20D65CD-2BB3-4346-8109-FD1C47E7FBBB}.Release|Win32.Build.0 = Release|Win32
+		{C20D65CD-2BB3-4346-8109-FD1C47E7FBBB}.Release|x64.ActiveCfg = Release|x64
+		{C20D65CD-2BB3-4346-8109-FD1C47E7FBBB}.Release|x64.Build.0 = Release|x64
+		{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1}.Debug|Win32.Build.0 = Debug|Win32
+		{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1}.Debug|x64.ActiveCfg = Debug|x64
+		{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1}.Debug|x64.Build.0 = Debug|x64
+		{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1}.Release|Win32.ActiveCfg = Release|Win32
+		{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1}.Release|Win32.Build.0 = Release|Win32
+		{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1}.Release|x64.ActiveCfg = Release|x64
+		{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -190,6 +213,8 @@ Global
 		{0DC4E34F-EAF0-44BF-8B48-6B800949BEB3} = {D5D4C621-4C52-4A83-A2F6-877E5D2F91DD}
 		{20F2845C-A2C7-42A2-99F9-52AE69BD6976} = {D5D4C621-4C52-4A83-A2F6-877E5D2F91DD}
 		{5650F9C4-7DD0-4C23-BFC7-022D253ACBFA} = {D5D4C621-4C52-4A83-A2F6-877E5D2F91DD}
+		{C20D65CD-2BB3-4346-8109-FD1C47E7FBBB} = {D5D4C621-4C52-4A83-A2F6-877E5D2F91DD}
+		{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1} = {D5D4C621-4C52-4A83-A2F6-877E5D2F91DD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {68CA0970-4242-4E4F-94D2-C19760FCA05D}

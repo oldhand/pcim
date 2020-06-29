@@ -467,6 +467,9 @@
     <ProjectReference Include="..\plugins\db\db.vcxproj">
       <Project>{745e6452-9fe1-435b-833a-767617eee1da}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\plugins\downloader\downloader.vcxproj">
+      <Project>{c20d65cd-2bb3-4346-8109-fd1c47e7fbbb}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\plugins\gloox\gloox.vcxproj">
       <Project>{36e32bc3-0645-4c90-8bf5-6495acb7cf5f}</Project>
     </ProjectReference>
@@ -478,6 +481,9 @@
     </ProjectReference>
     <ProjectReference Include="..\plugins\libqr\libqr.vcxproj">
       <Project>{2ea76d13-c2f1-4849-bbf0-2e58fd445887}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\plugins\pthread\pthread.vcxproj">
+      <Project>{a063dfad-6995-4e1a-afff-e43dc11e95b1}</Project>
     </ProjectReference>
     <ProjectReference Include="..\plugins\rest\rest.vcxproj">
       <Project>{755593a0-b5a5-4bf6-bf52-5069be53530f}</Project>

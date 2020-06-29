@@ -8,7 +8,22 @@
 #include "apis/db/provider_db.h"
 #include "utils/threads.h"
 #include "gui/extern_ctrl/extern_ctrl_manager.h"
- 
+#include "downloader/Defines.h"
+#include "downloader/DownloadManager.h"
+
+//#pragma comment(lib, "pthreadVC2.lib")
+//#pragma comment(lib, "pthreadVCE2.lib")
+//#pragma comment(lib, "pthreadVSE2.lib")
+//#pragma comment(lib, "pthread_d.lib")
+//#pragma comment(lib, "pthread_dll.lib")
+//#pragma comment(lib, "pthread_lib.lib")
+
+//#pragma comment(lib, "pthread.lib")
+#include <string>
+
+#ifdef _MSC_VER
+#include <windows.h>
+#endif
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -25,6 +40,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	wprintf_s(L"Command:\n%s\n\n", lpCmdLine);
 #endif
 
+	libdlmgr::DownloadManager::GetSingleton().Init("E:\\Temp");
 	// 创建主线程
 	MainThread thread;
 
@@ -39,6 +55,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		fp = nullptr;
 	}
 #endif 
+	libdlmgr::DownloadManager::GetSingleton().DeInit();
 
 	return 0;
 }
