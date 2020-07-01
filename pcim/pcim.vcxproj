@@ -110,7 +110,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;__WINDOWS__;__x86_64__;__SUPPORT_XP__;WITH_ENCRYPT;TIXML_USE_STL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>.\;..\;..\plugins\;..\plugins\cef\cef_module;..\plugins\cef\cef_wrapper\;..\plugins\ui_component\;..\plugins\openssl\include\;..\plugins\jsoncpp\include\;..\plugins\cef_wrapper;..\plugins\crypto++\cryptopp\;..\plugins\cpp_wrapper_util\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\;..\plugins\;..\plugins\cef\cef_module;..\plugins\cef\cef_wrapper\;..\plugins\ui_component\;..\plugins\openssl\include\;..\plugins\jsoncpp\include\;..\plugins\cef_wrapper;..\plugins\crypto++\cryptopp\;..\plugins\cpp_wrapper_util\;..\plugins\pthread;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
