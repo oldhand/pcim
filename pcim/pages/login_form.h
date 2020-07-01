@@ -26,7 +26,7 @@ public:
 	 */
 	virtual LRESULT OnClose(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 
-	static const std::wstring kClassName;
+	static const LPCTSTR kClassName;
 
 private:
 	/**

@@ -44,6 +44,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "downloader", "plugins\downl
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pthread", "plugins\pthread\pthread.vcxproj", "{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "uploader", "plugins\uploader\uploader.vcxproj", "{708F18DC-BC21-4031-A202-E33D4AA10429}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -196,6 +198,14 @@ Global
 		{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1}.Release|Win32.Build.0 = Release|Win32
 		{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1}.Release|x64.ActiveCfg = Release|x64
 		{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1}.Release|x64.Build.0 = Release|x64
+		{708F18DC-BC21-4031-A202-E33D4AA10429}.Debug|Win32.ActiveCfg = Debug|Win32
+		{708F18DC-BC21-4031-A202-E33D4AA10429}.Debug|Win32.Build.0 = Debug|Win32
+		{708F18DC-BC21-4031-A202-E33D4AA10429}.Debug|x64.ActiveCfg = Debug|x64
+		{708F18DC-BC21-4031-A202-E33D4AA10429}.Debug|x64.Build.0 = Debug|x64
+		{708F18DC-BC21-4031-A202-E33D4AA10429}.Release|Win32.ActiveCfg = Release|Win32
+		{708F18DC-BC21-4031-A202-E33D4AA10429}.Release|Win32.Build.0 = Release|Win32
+		{708F18DC-BC21-4031-A202-E33D4AA10429}.Release|x64.ActiveCfg = Release|x64
+		{708F18DC-BC21-4031-A202-E33D4AA10429}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -215,6 +225,7 @@ Global
 		{5650F9C4-7DD0-4C23-BFC7-022D253ACBFA} = {D5D4C621-4C52-4A83-A2F6-877E5D2F91DD}
 		{C20D65CD-2BB3-4346-8109-FD1C47E7FBBB} = {D5D4C621-4C52-4A83-A2F6-877E5D2F91DD}
 		{A063DFAD-6995-4E1A-AFFF-E43DC11E95B1} = {D5D4C621-4C52-4A83-A2F6-877E5D2F91DD}
+		{708F18DC-BC21-4031-A202-E33D4AA10429} = {D5D4C621-4C52-4A83-A2F6-877E5D2F91DD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {68CA0970-4242-4E4F-94D2-C19760FCA05D}

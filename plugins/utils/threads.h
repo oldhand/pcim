@@ -8,6 +8,7 @@ enum ThreadId
 	kThreadUI,			//UI线程（主线程）
 	kThreadDatabase,	//写DB线程
 	kThreadGlobalMisc,	//全局Misc线程（比如：打开url）
+	kThreadDownLoader,	//下载线程
 	kThreadDuilibHelper,//Duilib专用，UI辅助线程
 	kThreadLiveStreaming,//直播线程
 	kThreadScreenCapture,//取屏线程

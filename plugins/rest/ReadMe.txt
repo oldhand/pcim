@@ -25,3 +25,36 @@ StdAfx.h, StdAfx.cpp
 应用程序向导使用“TODO:”注释来指示应添加或自定义的源代码部分。
 
 /////////////////////////////////////////////////////////////////////////////
+
+
+/*try {
+	Content content = XN_Content::load("13878");
+	}
+	catch (std::exception& errorMsg) {
+	printf_s("_______XN_Content::load();__________%s___________\n", errorMsg.what());
+	}
+	try {
+		std::list<Content> lists = XN_Content::loadMany({ 13878, 1332 });
+	}
+	catch (std::exception& errorMsg) {
+		printf_s("_______XN_Content::loadMany();__________%s___________\n", errorMsg.what());
+	}
+	try {
+		Content newcontent = XN_Content::create("im_likes", "", false);
+		std::string tmp = "中华人民共和国"; 
+		tmp = nbase::strings::gbk_to_utf8(tmp);
+		newcontent.my["supplierid"] = "admin";
+		newcontent.my["deleted"] = "0";
+		newcontent.my["aa"] = tmp;
+		newcontent.my["bb"] = "0123123123";
+		newcontent.save("im_likes,im_likes_123");
+		newcontent.my["cc"] = "0123123123";
+		newcontent.my["dd"] = "asdasdasdasdad";
+		newcontent.save("im_likes,im_likes_123");
+
+		newcontent.erase("im_likes,im_likes_123");
+		newcontent.erase("im_likes,im_likes_123");
+	}
+	catch (std::exception& errorMsg) {
+		printf_s("________________%s___________\n", errorMsg.what());
+	}*/

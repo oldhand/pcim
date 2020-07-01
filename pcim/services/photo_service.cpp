@@ -3,8 +3,20 @@
 #include "services/user_service.h"
 #include "pages/login_manager.h"
 
+#include "downloader/Defines.h"
+#include "downloader/DownloadManager.h"
+#include "downloader/DownloadTask.h"
+#include "downloader/DownloadTaskGroup.h"
+
 namespace nim_comp
 {
+
+std::wstring PhotoService::UrlToFile(PhotoType type, const std::string& link){
+	int index = link.rfind('.');
+	std::string ext = link.substr(index, link.length() - index);
+	std::wstring photo_path = GetPhotoDir(kUser) + nbase::UTF8ToUTF16(QString::GetMd5(link) + ext);
+	return photo_path;
+}
 
 std::wstring PhotoService::GetUserPhoto(const std::string &accid)
 {
@@ -18,7 +30,7 @@ std::wstring PhotoService::GetUserPhoto(const std::string &accid)
 	UserService::GetInstance()->GetUserInfo(accid, info);
 	if (info.link.empty())
 		return default_photo;
-	photo_path = GetPhotoDir(kUser) + nbase::UTF8ToUTF16(QString::GetMd5(info.link));
+	photo_path = UrlToFile(kUser,info.link);
 
 	// 检查图片是否存在
 	if (!CheckPhotoOK(photo_path))
@@ -65,10 +77,7 @@ UnregisterCallback PhotoService::RegPhotoReady(const OnPhotoReadyCallback & call
 
 int PhotoService::CheckForDownload(PhotoType type, const std::string& url)
 {
-	if (url.find_first_of("http") != 0) //info.head_image不是正确的url
-		return -1;
-
-	std::wstring photo_path = GetPhotoDir(type) + nbase::UTF8ToUTF16(QString::GetMd5(url));
+	std::wstring photo_path = UrlToFile(kUser, url);
 	if (CheckPhotoOK(photo_path)) // 如果头像已经存在且完好，就不下载
 		return 1;
 
@@ -82,18 +91,58 @@ int PhotoService::CheckForDownload(PhotoType type, const std::string& url)
 
 void PhotoService::DownloadUserPhoto(const Db::Profile &info)
 {
-	std::string url = info.link;
-	std::wstring photo_path = GetPhotoDir(kUser) + nbase::UTF8ToUTF16(QString::GetMd5(url));
-	int valid = CheckForDownload(kUser, Env::imgBaseUrl + url);
+	std::string url = info.link; 
+	std::wstring photo_path = UrlToFile(kUser, info.link);
+	std::string fullurl = Env::imgBaseUrl + url;
+	int valid = CheckForDownload(kUser, url);
 	if (valid != 0)
 	{
 		if (valid == 1)
 		{
 			for (auto &it : photo_ready_cb_list_) // 执行监听头像下载的回调
-				(*it.second)(kUser, info.id, photo_path);
+				(*it.second)(kUser, info.profileid, photo_path);
 		}
 		return;
 	}
+
+
+	nbase::ThreadManager::PostTask(kThreadDownLoader, ToWeakCallback([this,info,fullurl, photo_path]() {
+		//std::string url1 = "http://api.mclouds.org.cn/storage/mp4/xiangyaAffidavit.mp4"; 
+		libdlmgr::TaskPtr task = libdlmgr::DownloadManager::GetSingleton().CreateDownLoadTask(fullurl);
+		bool isfinished = false;
+		task->SetDownloadOKCallBack([this, info, fullurl, photo_path, &isfinished](libdlmgr::DownloadTask* pTask)
+		{
+			download_tasks_[kUser].erase(QString::GetMd5(info.link));
+			std::wstring ws_file_path = nbase::UTF8ToUTF16(pTask->GetOutputPath());
+			if (nbase::FilePathIsExist(ws_file_path, false))
+			{
+				nbase::CopyFileW(ws_file_path, photo_path);
+				nbase::DeleteFile(ws_file_path); 
+				Post2UI([=](){
+					for (auto &it : photo_ready_cb_list_) // 执行监听头像下载的回调
+						(*it.second)(kUser, info.profileid, photo_path);
+				});
+				
+			}
+			isfinished = true;
+		});
+		task->SetDownloadPercentCallBack([fullurl](double percent)
+		{
+			printf_s("_______SetDownloadPercentCallBack_______%s_____%lf%%__________\n", fullurl.c_str(), percent);
+		});
+		libdlmgr::DownloadManager::GetSingleton().AddDownLoadTask(task);
+		while (true)
+		{
+			if (isfinished)  break;
+			libdlmgr::DownloadManager::GetSingleton().Update();
+#ifdef _MSC_VER
+			Sleep(10);
+#else
+			usleep(100 * 1000);
+#endif
+		}
+	}));
+	 
 
 	//nim::NOS::DownloadMediaCallback cb = ToWeakCallback([this, info, photo_path](int res_code, const std::string& file_path, const std::string& call_id, const std::string& res_id) {
 	//	download_tasks_[kUser].erase(nim::Tool::GetMd5(info.GetIconUrl()));

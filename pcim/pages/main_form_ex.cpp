@@ -67,8 +67,7 @@ namespace nim_comp
 		btn_online_state_ = dynamic_cast<ui::Button*>(FindControl(L"btn_online_state"));
 		//btn_online_state_->SetVisible(nim_comp::SubscribeEventManager::GetInstance()->IsEnabled());		
 		btn_header_->AttachClick([this](ui::EventArgs* param){
-			//nim_comp::WindowsManager::GetInstance()->SingletonShow<nim_comp::ProfileMine>(nim_comp::ProfileMine::kClassName);
-			nim_comp::ProfileForm::ShowProfileForm(nim_comp::LoginManager::GetInstance()->GetAccount());
+			nim_comp::ProfileForm::ShowProfileForm(nim_comp::LoginManager::GetInstance()->GetProfileId());
 			return true;
 		});
 		//btn_online_state_->AttachClick(nbase::Bind(&MainFormEx::OnlineStateMenuButtonClick, this, std::placeholders::_1));
@@ -280,19 +279,19 @@ namespace nim_comp
 	}
 	void MainFormEx::OnUserInfoChange(const std::list<Db::Profile> &uinfos)
 	{
-		/*for (auto iter = uinfos.cbegin(); iter != uinfos.cend(); iter++)
+		for (auto iter = uinfos.cbegin(); iter != uinfos.cend(); iter++)
 		{
-			if (nim_comp::LoginManager::GetInstance()->IsEqual(iter->id))
+			if (nim_comp::LoginManager::GetInstance()->IsEqual(iter->profileid))
 			{
 				InitHeader();
 				break;
 			}
-		}*/
+		}
 	}
 
-	void MainFormEx::OnUserPhotoReady(PhotoType type, const std::string& account, const std::wstring& photo_path)
+	void MainFormEx::OnUserPhotoReady(PhotoType type, const std::string& profileid, const std::wstring& photo_path)
 	{
-		if (type == kUser && nim_comp::LoginManager::GetInstance()->GetAccount() == account)
+		if (type == kUser && nim_comp::LoginManager::GetInstance()->GetProfileId() == profileid)
 			btn_header_->SetBkImage(photo_path);
 	}
 	void MainFormEx::InitHeader()
@@ -338,21 +337,21 @@ namespace nim_comp
 		//×¢²á»Øµ÷
 		nim_comp::CMenuElementUI* display_session_list = (nim_comp::CMenuElementUI*)pMenu->FindControl(L"display_session_list");
 		display_session_list->AttachSelect(ToWeakCallback([this](ui::EventArgs* param){
-			/*auto session_plugin = MainPluginsManager::GetInstance()->GetPlugin(SessionPlugin::kPLUGIN_NAME);
-			session_plugin->Selected(true, true);			
-			LeftClick();*/
+			//auto session_plugin = MainPluginsManager::GetInstance()->GetPlugin(SessionPlugin::kPLUGIN_NAME);
+			//session_plugin->Selected(true, true);			
+			//LeftClick();
 			return true;
 		}));
 
 		nim_comp::CMenuElementUI* logoff = (nim_comp::CMenuElementUI*)pMenu->FindControl(L"logoff");
 		logoff->AttachSelect(ToWeakCallback([this](ui::EventArgs* param){
-			/*QCommand::Set(kCmdRestart, L"true");
-			std::wstring wacc = nbase::UTF8ToUTF16(LoginManager::GetInstance()->GetAccount());
-			QCommand::Set(kCmdAccount, wacc);
+			QCommand::Set(L"Restart", L"true");
+			std::wstring wacc = nbase::UTF8ToUTF16(LoginManager::GetInstance()->GetProfileId());
+			QCommand::Set(L"Account", wacc);
 			auto task = [](){
 				nim_comp::LoginCallback::DoLogout(false, nim::kNIMLogoutChangeAccout);			
 			};
-			nbase::ThreadManager::PostTask(task);*/
+			nbase::ThreadManager::PostTask(task);
 			return true;
 		}));
 

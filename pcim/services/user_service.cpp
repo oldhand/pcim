@@ -83,10 +83,10 @@ void UserService::InvokeUpdateMyInfo(const Db::Profile &new_info, const OnUpdate
 
 void UserService::InvokeUpdateMyPhoto(const std::string &url, const OnUpdateUserInfoCallback& cb)
 {
-	/*Db::Profile my_info;
-	my_info.SetAccId(LoginManager::GetInstance()->GetAccount());
-	my_info.SetIconUrl(url);
-	InvokeUpdateMyInfo(my_info, cb);*/
+	Db::Profile my_info;
+	//my_info.SetAccId(LoginManager::GetInstance()->GetAccount());
+	//my_info.SetIconUrl(url);
+	//InvokeUpdateMyInfo(my_info, cb);
 }
 
 const std::map<std::string, Db::Profile>& UserService::GetAllUserInfos()
@@ -114,6 +114,12 @@ bool UserService::GetUserInfo(const std::string &id, Db::Profile &info)
 		info.profileid = id; 
 		if(on_query_list_.find(id) == on_query_list_.cend())
 			InvokeGetUserInfo(std::list<std::string>(1, id));
+		iter = all_user_.find(id);
+		if (iter != all_user_.cend())
+		{
+			info = iter->second;
+			return true;
+		}
 		return false;
 	}
 }

@@ -12,7 +12,7 @@ enum PhotoType
 	kOther,
 };
 
-typedef std::function<void(PhotoType type, const std::string& id, const std::wstring &photo_path)> OnPhotoReadyCallback;
+typedef std::function<void(PhotoType type, const std::string& profileid, const std::wstring &photo_path)> OnPhotoReadyCallback;
 
 namespace nim_comp
 {
@@ -99,6 +99,14 @@ private:
 	* @return int -1 url不正确，0 不玩好，1 完好
 	*/
 	int CheckForDownload(PhotoType type, const std::string& url);
+
+	/**
+	* 检查某个url对应的图片
+	* @param[in] type 头像的类型
+	* @param[in] url 头像的下载地址
+	* @return 图片地址
+	*/
+	std::wstring UrlToFile(PhotoType type, const std::string& link);
 
 private:
 	std::map<int, std::unique_ptr<OnPhotoReadyCallback>> photo_ready_cb_list_; //用户头像下载完成回调列表

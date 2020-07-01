@@ -16,11 +16,11 @@ void ProfileForm::ShowProfileForm(UTF8String uid, bool is_robot, bool inplugin_b
 ProfileForm * ProfileForm::ShowProfileForm(UTF8String uid, bool is_robot/* = false*/)
 {
 	ProfileForm* form = (ProfileForm*)WindowsManager::GetInstance()->GetWindow(kClassName, kClassName);
-	if (form != NULL && form->GetNameCard().id.compare(uid) == 0) //当前已经打开的名片正是希望打开的名片
+	if (form != NULL && form->GetNameCard().profileid.compare(uid) == 0) //当前已经打开的名片正是希望打开的名片
 		; // 直接显示
 	else
 	{
-		if (form != NULL && form->GetNameCard().id.compare(uid) != 0)//当前已经打开的名片不是希望打开的名片
+		if (form != NULL && form->GetNameCard().profileid.compare(uid) != 0)//当前已经打开的名片不是希望打开的名片
 			::DestroyWindow(form->m_hWnd); //关闭重新创建
 		form = new ProfileForm();
 		form->Create(NULL, L"", WS_OVERLAPPEDWINDOW & ~WS_MAXIMIZEBOX, 0L);

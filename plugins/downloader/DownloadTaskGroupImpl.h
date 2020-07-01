@@ -5,20 +5,20 @@
 
 DOWNLOAD_MANAGER_START
 
-class TaskGroup;
-class TaskGroupImpl
+class DownloadTaskGroup;
+class DownloadTaskGroupImpl
 {
 public:
-	TaskGroupImpl(TaskGroup* pOwner) 
+	DownloadTaskGroupImpl(DownloadTaskGroup* pOwner)
 		: _pOwner(pOwner)
 		, _pDownLoadGroupOk(nullptr)
 		, _pDownloadPercent(nullptr){};
-	~TaskGroupImpl() {};
+	~DownloadTaskGroupImpl() {};
 
 	friend class DownloadManagerImpl;
 	friend class DownloadTask;
 	friend class ThreadTaskQueue;
-	friend class TaskGroup;
+	friend class DownloadTaskGroup;
 
 	void AddTask(TaskPtr pTask);
 	void OnTaskFinished(DownloadTask* pTask);
@@ -34,7 +34,7 @@ private:
 
 	std::vector<std::string> _outputPathes;
 
-	TaskGroup* _pOwner;
+	DownloadTaskGroup* _pOwner;
 };
 
 DOWNLOAD_MANAGER_END

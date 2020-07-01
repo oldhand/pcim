@@ -26,7 +26,7 @@ struct DownLoadRange
 };
 
 class DownloadTask;
-class TaskGroup;
+class DownloadTaskGroup;
 class DownloadManager;
 class MultipartByteRangesParser;
 
@@ -38,7 +38,7 @@ public:
 
 	friend class DownloadManagerImpl;
 	friend class ThreadTaskQueue;
-	friend class TaskGroupImpl;
+	friend class DownloadTaskGroupImpl;
 	friend class DownloadTask;
 	friend class MultipartByteRangesParser;
 	friend class hotpatch::HotPatchInternal;
@@ -109,7 +109,7 @@ private:
 	CURL *_pCurlHandle;
 
 	DownloadManager* _pMgr;
-	TaskGroup *_pGroup;
+	DownloadTaskGroup *_pGroup;
 
 	uint64_t _iTaskId;
 

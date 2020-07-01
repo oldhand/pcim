@@ -85,7 +85,7 @@ namespace nim_comp
 		* @param[in] photo_path 头像本地路径
 		* @return void 无返回值
 		*/
-		void OnUserPhotoReady(PhotoType type, const std::string& account, const std::wstring& photo_path);		
+		void OnUserPhotoReady(PhotoType type, const std::string& profileid, const std::wstring& photo_path);
 
 		/**
 		* 初始化用户头像

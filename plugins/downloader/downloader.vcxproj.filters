@@ -45,10 +45,10 @@
     <ClInclude Include="sqlite3.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="TaskGroup.h">
+    <ClInclude Include="DownloadTaskGroup.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="TaskGroupImpl.h">
+    <ClInclude Include="DownloadTaskGroupImpl.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -71,10 +71,10 @@
     <ClCompile Include="MultipartByteRangesParser.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="TaskGroup.cpp">
+    <ClCompile Include="DownloadTaskGroup.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="TaskGroupImpl.cpp">
+    <ClCompile Include="DownloadTaskGroupImpl.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

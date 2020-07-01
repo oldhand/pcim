@@ -17,7 +17,7 @@ DownloadTask::DownloadTask()
 
 DownloadTask::~DownloadTask()
 {
-	TASK_IMPL(_pImpl)->~DownloadTaskImpl();
+	DOWNLOAD_TASK_IMPL(_pImpl)->~DownloadTaskImpl();
 }
 
 void *DownloadTask::operator new(size_t size)
@@ -27,32 +27,32 @@ void *DownloadTask::operator new(size_t size)
 
 void DownloadTask::SetValidTime(time_t iValidTime)
 {
-	TASK_IMPL(_pImpl)->_iFileValidTime = iValidTime;
+	DOWNLOAD_TASK_IMPL(_pImpl)->_iFileValidTime = iValidTime;
 }
 
 int DownloadTask::GetHttpCode() const
 {
-	return TASK_IMPL(_pImpl)->_iHttpCode;
+	return DOWNLOAD_TASK_IMPL(_pImpl)->_iHttpCode;
 }
 
 const std::string& DownloadTask::GetOutputPath() const
 {
-	return TASK_IMPL(_pImpl)->_fileCacheName;
+	return DOWNLOAD_TASK_IMPL(_pImpl)->_fileCacheName;
 }
 
 void DownloadTask::SetDownloadOKCallBack(const std::function<void(DownloadTask* pTask)>& pDownloadOK)
 {
-	TASK_IMPL(_pImpl)->_pDownloadOK = pDownloadOK;
+	DOWNLOAD_TASK_IMPL(_pImpl)->_pDownloadOK = pDownloadOK;
 }
 
 void DownloadTask::SetDownloadFailedCallBack(const std::function<void()>& pDownloadFailed)
 {
-	TASK_IMPL(_pImpl)->_pDownloadFailed = pDownloadFailed;
+	DOWNLOAD_TASK_IMPL(_pImpl)->_pDownloadFailed = pDownloadFailed;
 }
 
 void DownloadTask::SetDownloadPercentCallBack(const std::function<void(double)>& pDownloadPercent)
 {
-	TASK_IMPL(_pImpl)->_pDownloadPercent = pDownloadPercent;
+	DOWNLOAD_TASK_IMPL(_pImpl)->_pDownloadPercent = pDownloadPercent;
 }
 //-----------------------------------------------------------------
 

@@ -4,26 +4,14 @@
 #include "stdafx.h"
 #include "main.h"
 #include "pages/login_form.h"
+#include "pages/ui_window_manager.h"
 #include "common/config/config_helper.h"
 #include "apis/db/provider_db.h"
 #include "utils/threads.h"
 #include "gui/extern_ctrl/extern_ctrl_manager.h"
 #include "downloader/Defines.h"
 #include "downloader/DownloadManager.h"
-
-//#pragma comment(lib, "pthreadVC2.lib")
-//#pragma comment(lib, "pthreadVCE2.lib")
-//#pragma comment(lib, "pthreadVSE2.lib")
-//#pragma comment(lib, "pthread_d.lib")
-//#pragma comment(lib, "pthread_dll.lib")
-//#pragma comment(lib, "pthread_lib.lib")
-
-//#pragma comment(lib, "pthread.lib")
-#include <string>
-
-#ifdef _MSC_VER
-#include <windows.h>
-#endif
+#include "pthread/pthread.h"
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -33,6 +21,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
+	pthread_win32_process_attach_np();
+	pthread_win32_thread_attach_np();
+
 #ifdef _DEBUG
 	AllocConsole();
 	FILE* fp = NULL;
@@ -40,7 +31,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	wprintf_s(L"Command:\n%s\n\n", lpCmdLine);
 #endif
 
-	libdlmgr::DownloadManager::GetSingleton().Init("E:\\Temp");
+	std::wstring appdir = QPath::GetNimAppDataDir(L"");
+	if (false == nbase::FilePathIsExist(appdir, true)) {
+		nbase::CreateDirectory(appdir.c_str());
+	}
+	std::wstring cacahedir = appdir + L"Temp\\";
+	if (false == nbase::FilePathIsExist(cacahedir, true)) {
+		nbase::CreateDirectory(cacahedir.c_str());
+	}
+	UTF8String dirctory = nbase::UTF16ToUTF8(cacahedir);
+	libdlmgr::DownloadManager::GetSingleton().Init(dirctory);
 	// 创建主线程
 	MainThread thread;
 
@@ -56,7 +56,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	}
 #endif 
 	libdlmgr::DownloadManager::GetSingleton().DeInit();
-
+	pthread_win32_thread_detach_np();
+	pthread_win32_process_detach_np();
 	return 0;
 }
 
@@ -101,42 +102,23 @@ void MainThread::Init()
 
 	Db::ProviderDb::GetInstance()->initdb();
 	Db::ProviderDb::GetInstance()->initindex();
-	/*try {
-	Content content = XN_Content::load("13878");
-	}
-	catch (std::exception& errorMsg) {
-	printf_s("_______XN_Content::load();__________%s___________\n", errorMsg.what());
-	}
-	try {
-		std::list<Content> lists = XN_Content::loadMany({ 13878, 1332 });
-	}
-	catch (std::exception& errorMsg) {
-		printf_s("_______XN_Content::loadMany();__________%s___________\n", errorMsg.what());
-	}
-	try {
-		Content newcontent = XN_Content::create("im_likes", "", false);
-		std::string tmp = "中华人民共和国"; 
-		tmp = nbase::strings::gbk_to_utf8(tmp);
-		newcontent.my["supplierid"] = "admin";
-		newcontent.my["deleted"] = "0";
-		newcontent.my["aa"] = tmp;
-		newcontent.my["bb"] = "0123123123";
-		newcontent.save("im_likes,im_likes_123");
-		newcontent.my["cc"] = "0123123123";
-		newcontent.my["dd"] = "asdasdasdasdad";
-		newcontent.save("im_likes,im_likes_123");
+	
 
-		newcontent.erase("im_likes,im_likes_123");
-		newcontent.erase("im_likes,im_likes_123");
-	}
-	catch (std::exception& errorMsg) {
-		printf_s("________________%s___________\n", errorMsg.what());
-	}*/
 	// 创建一个默认带有阴影的居中窗口
-	LoginForm* loginform = new LoginForm();
-	loginform->Create(NULL, LoginForm::kClassName.c_str(), WS_OVERLAPPEDWINDOW & ~WS_MAXIMIZEBOX, 0);
-	loginform->CenterWindow();
-	loginform->ShowWindow();
+	std::wstring app_crash = QCommand::Get(L"AppCrash");
+	if (app_crash.empty())
+	{
+		nim_ui::WindowsManager::SingletonShow<LoginForm>(LoginForm::kClassName);
+		//LoginForm* loginform = new LoginForm();
+		//loginform->Create(NULL, LoginForm::kClassName.c_str(), WS_OVERLAPPEDWINDOW & ~WS_MAXIMIZEBOX, 0);
+		//loginform->CenterWindow();
+		//loginform->ShowWindow();
+	}
+	else {
+		std::wstring content = nbase::StringPrintf(ui::MutiLanSupport::GetInstance()->GetStringViaID(L"STRID_APP_DUMP_DUMP_TIP").c_str(), app_crash.c_str());
+		nim_comp::MsgboxCallback cb = nbase::Bind(&MainThread::OnMsgBoxCallback, this, std::placeholders::_1, nbase::UTF16ToUTF8(app_crash));
+		ShowMsgBox(NULL, cb, content, false, L"STRING_TIPS", true, L"STRID_APP_DUMP_OPEN", true, L"STRING_NO", true);
+	} 
 }
 
 void MainThread::Cleanup()
@@ -156,6 +138,9 @@ void MainThread::PreMessageLoop()
 	screen_capture_thread_.reset(new MiscThread(kThreadScreenCapture, "screen capture"));
 	screen_capture_thread_->Start();
 
+	downloader_thread_.reset(new MiscThread(kThreadDownLoader, "DownLoader Thread"));
+	downloader_thread_->Start();
+
 	db_thread_.reset(new DBThread(kThreadDatabase, "Database Thread"));
 	db_thread_->Start();
 
@@ -170,8 +155,22 @@ void MainThread::PostMessageLoop()
 	screen_capture_thread_->Stop();
 	screen_capture_thread_.reset(NULL);
 
+	downloader_thread_->Stop();
+	downloader_thread_.reset(NULL);
+
 	db_thread_->Stop();
 	db_thread_.reset(NULL);
 
 
+}
+
+void MainThread::OnMsgBoxCallback(nim_comp::MsgBoxRet ret, const std::string& dmp_path)
+{
+	if (ret == nim_comp::MB_YES)
+	{
+		//std::string directory;
+		//shared::FilePathApartDirectory(dmp_path, directory);
+		//QCommand::AppStartWidthCommand(nbase::UTF8ToUTF16(directory), L"");
+	}
+	nim_ui::WindowsManager::SingletonShow<LoginForm>(LoginForm::kClassName);
 }

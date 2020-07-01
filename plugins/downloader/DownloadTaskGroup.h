@@ -6,11 +6,11 @@
 DOWNLOAD_MANAGER_START
 
 //-----------------------------------------------------------------
-class TaskGroup
+class DownloadTaskGroup
 {
 public:
-	TaskGroup();
-	~TaskGroup();
+	DownloadTaskGroup();
+	~DownloadTaskGroup();
 
 	friend class DownloadManagerImpl;
 

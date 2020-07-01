@@ -310,8 +310,7 @@ private:
 	ui::VBox*		common_other_ = NULL;
 	ui::RichEdit*	robot_intro_ = NULL;
 
-	ui::CheckBox*	multi_push_switch = NULL;
-	ui::CheckBox*	webrtc_setting_ = NULL;
+ 
 	ui::CheckBox*	notify_switch = NULL;
 	ui::CheckBox*	black_switch = NULL;
 	ui::CheckBox*	mute_switch = NULL;
@@ -338,9 +337,5 @@ private:
 	ui::Combo*		birth_day_combo = NULL;
 	ui::Label*		phone_label = NULL;
 	ui::RichEdit*	phone_edit = NULL;
-	ui::Label*		email_label = NULL;
-	ui::RichEdit*	email_edit = NULL;
-	ui::Label*		signature_label = NULL;
-	ui::RichEdit*	signature_edit = NULL;
 };
 }

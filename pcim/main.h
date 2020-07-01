@@ -4,6 +4,8 @@
 
 #include "common/thread/misc_thread.h"
 #include "common/thread/db_thread.h"
+#include "ui_components/msgbox/msgbox.h"
+
 /** @class MainThread
 * @brief 主线程（UI线程）类，继承 nbase::FrameworkThread
 * @copyright (c) 2015, NetEase Inc. All rights reserved
@@ -17,6 +19,12 @@ public:
 	virtual ~MainThread() {}
 
 private:
+	/**
+	* 程序崩溃时的处理函数
+	* @param[in] ret	用户的处理方式（关闭或重新运行程序）
+	* @return void	无返回值
+	*/
+	void OnMsgBoxCallback(nim_comp::MsgBoxRet ret, const std::string& dmp_path);
 	/**
 	* 虚函数，初始化主线程
 	* @return void	无返回值
@@ -44,5 +52,6 @@ private:
 private:
 	std::unique_ptr<MiscThread>	misc_thread_;
 	std::unique_ptr<MiscThread>	screen_capture_thread_;
+	std::unique_ptr<MiscThread>	downloader_thread_;
 	std::unique_ptr<DBThread>	db_thread_;
 };

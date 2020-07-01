@@ -87,10 +87,10 @@ public:
 	
 	/**
 	* 判断帐号是否为已登录帐号(自动转换为小写来判断)
-	* @param[in] account 用户id
+	* @param[in] profileid 用户id
 	* @return bool true 是，false 否
 	*/
-	bool IsEqual(const std::string& account);
+	bool IsEqual(const std::string& profileid);
 
 	/**
 	* 设置登陆密码

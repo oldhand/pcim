@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Window caption="0,0,0,160">
+	<Box width="auto" height="auto" bkcolor="bk_wnd_lightcolor" >
+		<Box name="container" width="auto" height="auto" />
+		<Box width="stretch" height="auto" bkcolor="bk_wnd_darkcolor">
+			<HBox width="auto" height="auto" halign="right" margin="0,6,6,0">
+				<Button class="btn_wnd_min" name="minbtn"/>
+				<Button class="btn_wnd_close" name="closebtn" margin="2"/>
+			</HBox>
+		</Box>
+	</Box>
+</Window>

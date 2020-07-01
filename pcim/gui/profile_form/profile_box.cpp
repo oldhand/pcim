@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "profile_box.h"
-//#include "callback/multiport/multiport_push_callback.h"
-//#include "module/session/session_manager.h"
-//#include "module/service/mute_black_service.h"
-//#include "av_kit/module/video/video_manager.h"
-//#include "head_modify_form.h"
-//#include "callback/team/team_callback.h"
+#include "pages/login_manager.h"
+#include "ui_components\windows_manager\windows_manager.h"
+#include "gui/profile_form/head_modify_form.h"
+#include "gui/session/session_manager.h"
+
+
 namespace nim_comp
 {
 	ProfileBox::ProfileBox() : taskbar_title_function_(nullptr), close_function_(nullptr)
@@ -30,8 +30,6 @@ namespace nim_comp
 		nickname_label = static_cast<ui::Label*>(FindSubControl(L"nickname"));
 		sex_icon = static_cast<ui::CheckBox*>(FindSubControl(L"sex_icon"));
 
-		multi_push_switch = static_cast<ui::CheckBox*>(FindSubControl(L"multi_push_switch"));
-		webrtc_setting_ = static_cast<ui::CheckBox*>(FindSubControl(L"webrtc_setting"));
 		notify_switch = static_cast<ui::CheckBox*>(FindSubControl(L"notify_switch"));
 		black_switch = static_cast<ui::CheckBox*>(FindSubControl(L"black_switch"));
 		mute_switch = static_cast<ui::CheckBox*>(FindSubControl(L"mute_switch"));
@@ -62,12 +60,6 @@ namespace nim_comp
 
 		phone_label = static_cast<ui::Label*>(FindSubControl(L"phone"));
 		phone_edit = static_cast<ui::RichEdit*>(FindSubControl(L"phone_edit"));
-
-		email_label = static_cast<ui::Label*>(FindSubControl(L"email"));
-		email_edit = static_cast<ui::RichEdit*>(FindSubControl(L"email_edit"));
-
-		signature_label = static_cast<ui::Label*>(FindSubControl(L"signature"));
-		signature_edit = static_cast<ui::RichEdit*>(FindSubControl(L"signature_edit"));
 
 		common_info_ = static_cast<ui::VBox*>(FindSubControl(L"common_info"));
 		robot_info_ = static_cast<ui::VBox*>(FindSubControl(L"robot_info"));
@@ -103,28 +95,21 @@ namespace nim_comp
 	void ProfileBox::InitUserInfo(const Db::Profile &info)
 	{
 		m_uinfo = info;
-
-		//if (m_uinfo.id == LoginManager::GetInstance()->GetAccount())
-		//	user_type = -1;
-		//else
-		//	user_type = UserService::GetInstance()->GetUserType(m_uinfo.id);
-		user_type = -1;
+		if (m_uinfo.profileid == LoginManager::GetInstance()->GetProfileId())
+			user_type = -1;
+		else
+			user_type = UserService::GetInstance()->GetUserType(m_uinfo.profileid);
 		if (user_type == -1) // 自己的名片
 		{
-			// 获取多端推送开关
-			//nim::Client::GetMultiportPushConfigAsync(&MultiportPushCallback::OnMultiportPushConfigChange);
-
 			head_image_btn->SetMouseEnabled(true); // 可点击头像进行更换
 			btn_modify_info->SetVisible(true); // 显示“编辑”按钮
 			head_image_btn->SetMouseEnabled(true); // 可点击头像进行更换
 
 			FindSubControl(L"only_other")->SetVisible(false);	// 当名片是自己的时候，隐藏下面两块
-			FindSubControl(L"only_me")->SetVisible(true);		// 当名片是自己的时候，显示多端推送开关
+ 
 
 			nickname_edit->SetLimitText(10);
 			phone_edit->SetLimitText(13);
-			email_edit->SetLimitText(30);
-			signature_edit->SetLimitText(30);
 
 			head_image_btn->AttachClick(nbase::Bind(&ProfileBox::OnHeadImageClicked, this, std::placeholders::_1));
 
@@ -135,16 +120,11 @@ namespace nim_comp
 			btn_cancel_modify->AttachClick(nbase::Bind(&ProfileBox::OnModifyOrCancelBtnClicked, this, std::placeholders::_1, false));
 			btn_save_modify->AttachClick(nbase::Bind(&ProfileBox::OnSaveInfoBtnClicked, this, std::placeholders::_1));
 
-			multi_push_switch->AttachSelect(nbase::Bind(&ProfileBox::OnMultiPushSwitchSelected, this, std::placeholders::_1));
-			multi_push_switch->AttachUnSelect(nbase::Bind(&ProfileBox::OnMultiPushSwitchUnSelected, this, std::placeholders::_1));
-//			webrtc_setting_->Selected(nim_comp::VideoManager::GetInstance()->GetWebrtc(), false);
-			webrtc_setting_->AttachSelect(nbase::Bind(&ProfileBox::OnWebRtcSelected, this, std::placeholders::_1));
-			webrtc_setting_->AttachUnSelect(nbase::Bind(&ProfileBox::OnWebRtcUnSelected, this, std::placeholders::_1));
+
 		}
 		else
 		{
 			FindSubControl(L"only_other")->SetVisible(true);	// 当名片是自己的时候，显示下面两块
-			FindSubControl(L"only_me")->SetVisible(false);		// 当名片是自己的时候，隐藏多端推送开关
 
 			CheckInMuteBlack();
 			add_or_del->SelectItem(user_type == nim::kNIMFriendFlagNormal ? 0 : 1);
@@ -165,7 +145,7 @@ namespace nim_comp
 			mute_switch->AttachUnSelect(nbase::Bind(&ProfileBox::OnMuteSwitchUnSelected, this, std::placeholders::_1));
 
 			//unregister_cb.Add(MuteBlackService::GetInstance()->RegSyncSetMuteCallback(nbase::Bind(&ProfileBox::OnNotifyChangeCallback, this, std::placeholders::_1, std::placeholders::_2)));
-//			unregister_cb.Add(MuteBlackService::GetInstance()->RegSyncSetBlackCallback(nbase::Bind(&ProfileBox::OnBlackChangeCallback, this, std::placeholders::_1, std::placeholders::_2)));
+			//unregister_cb.Add(MuteBlackService::GetInstance()->RegSyncSetBlackCallback(nbase::Bind(&ProfileBox::OnBlackChangeCallback, this, std::placeholders::_1, std::placeholders::_2)));
 
 			start_chat->AttachClick(nbase::Bind(&ProfileBox::OnStartChatBtnClicked, this, std::placeholders::_1));
 			delete_friend->AttachClick(nbase::Bind(&ProfileBox::OnDeleteFriendBtnClicked, this, std::placeholders::_1));
@@ -223,11 +203,7 @@ namespace nim_comp
 			}
 			else if (name == L"phone_edit")
 			{
-				email_edit->SetFocus();
-			}
-			else if (name == L"email_edit")
-			{
-				signature_edit->SetFocus();
+				nickname_edit->SetFocus();
 			}
 			else if (name == L"signature_edit")
 			{
@@ -321,10 +297,13 @@ namespace nim_comp
 
 	bool ProfileBox::OnStartChatBtnClicked(ui::EventArgs* args)
 	{
-		/*if (!m_uinfo.id.empty())
-			SessionManager::GetInstance()->OpenSessionBox(m_uinfo.id, nim::kNIMSessionTypeP2P);
-		else
-			SessionManager::GetInstance()->OpenSessionBox(m_robot.id, nim::kNIMSessionTypeP2P);*/
+		if (!m_uinfo.profileid.empty())
+		{
+			SessionManager::GetInstance()->OpenSessionBox(m_uinfo.profileid, nim::kNIMSessionTypeP2P);
+		}
+		else {
+			//SessionManager::GetInstance()->OpenSessionBox(m_robot.profileid, nim::kNIMSessionTypeP2P);
+		}
 		return true;
 	}
 
@@ -372,11 +351,11 @@ namespace nim_comp
 
 	bool ProfileBox::OnHeadImageClicked(ui::EventArgs * args)
 	{
-		std::string uid = m_uinfo.id;
-	/*	HeadModifyForm* form = (HeadModifyForm*)WindowsManager::GetInstance()->GetWindow(HeadModifyForm::kClassName, nbase::UTF8ToUTF16(uid));
+		std::string profileid = m_uinfo.profileid;
+		HeadModifyForm* form = (HeadModifyForm*)nim_comp::WindowsManager::GetInstance()->GetWindow(HeadModifyForm::kClassName, nbase::UTF8ToUTF16(profileid));
 		if (form == NULL)
 		{
-			form = new HeadModifyForm(uid, L"");
+			form = new HeadModifyForm(profileid, L"");
 			form->Create(NULL, NULL, WS_OVERLAPPED, 0L);
 			form->ShowWindow(true);
 			form->CenterWindow();
@@ -385,29 +364,25 @@ namespace nim_comp
 		{
 			::SetForegroundWindow(form->GetHWND());
 		}
-		form->RegCompleteCallback(nbase::Bind(&ProfileBox::OnModifyHeaderComplete, this, std::placeholders::_1, std::placeholders::_2));*/
+		form->RegCompleteCallback(nbase::Bind(&ProfileBox::OnModifyHeaderComplete, this, std::placeholders::_1, std::placeholders::_2));
 
 		return true;
 	}
 
 	bool ProfileBox::OnModifyOrCancelBtnClicked(ui::EventArgs* args, bool to_modify)
 	{
-		/*if (LoginManager::GetInstance()->IsEqual(m_uinfo.id))
+		if (LoginManager::GetInstance()->IsEqual(m_uinfo.profileid))
 		{
 			btn_modify_info->SetVisible(!to_modify);
 			btn_save_modify->SetVisible(to_modify);
 			btn_cancel_modify->SetVisible(to_modify);
-		}*/
+		}
 		nickname_box->SetVisible(to_modify);
 		sex_box->SetVisible(to_modify);
 		birthday_label->SetVisible(!to_modify);
 		birthday_combo_box->SetVisible(to_modify);
 		phone_label->SetVisible(!to_modify);
 		phone_edit->SetVisible(to_modify);
-		email_label->SetVisible(!to_modify);
-		email_edit->SetVisible(to_modify);
-		signature_label->SetVisible(!to_modify);
-		signature_edit->SetVisible(to_modify);
 		if (to_modify)
 		{
 			InitBirthdayCombo(); //初始化生日下拉框，在下面设置初始值
@@ -679,40 +654,35 @@ namespace nim_comp
 		if (-1 != user_type)
 			return;
 
-		multi_push_switch->Selected(switch_on, false);
+
 	}
 
 	void ProfileBox::InitLabels()
 	{
 		SetShowName();
 
-		head_image_btn->SetBkImage(PhotoService::GetInstance()->GetUserPhoto(m_uinfo.id)); //头像
+		head_image_btn->SetBkImage(PhotoService::GetInstance()->GetUserPhoto(m_uinfo.profileid)); //头像
+ 
+		if (m_uinfo.gender.compare("male") == 0) // 昵称右边的性别图标
+		{
+			sex_icon->Selected(false);
+			sex_icon->SetVisible(true);
+		}
+		else if (m_uinfo.gender.compare("female") == 0) {
+			sex_icon->Selected(true);
+			sex_icon->SetVisible(true);
+		}
+		else {
+			sex_icon->SetVisible(false);
+		} 
 
-		//if (m_uinfo.ExistValue(nim::kUserNameCardKeyGender))
-		//{
-		//	switch (m_uinfo.GetGender()) // 昵称右边的性别图标
-		//	{
-		//	case UG_MALE:
-		//		sex_icon->Selected(false);
-		//		sex_icon->SetVisible(true);
-		//		break;
-		//	case UG_FEMALE:
-		//		sex_icon->Selected(true);
-		//		sex_icon->SetVisible(true);
-		//		break;
-		//	case UG_UNKNOWN:
-		//	default:
-		//		sex_icon->SetVisible(false);
-		//	}
-		//}
-
-		//std::wstring account = nbase::StringPrintf(ui::MutiLanSupport::GetInstance()->GetStringViaID(L"STRID_PROFILE_FORM_ACCOUNT_").c_str(), nbase::UTF8ToUTF16(m_uinfo.id).c_str());
-		//user_id_label->SetText(account);//帐号
+		std::wstring account = nbase::StringPrintf(ui::MutiLanSupport::GetInstance()->GetStringViaID(L"STRID_PROFILE_FORM_ACCOUNT_").c_str(), nbase::UTF8ToUTF16(m_uinfo.profileid).c_str());
+		user_id_label->SetText(account);//帐号
 
 		//if (m_uinfo.ExistValue(nim::kUserNameCardKeyBirthday))
-		//	birthday_label->SetText(nbase::UTF8ToUTF16(m_uinfo.GetBirth())); //生日
+		birthday_label->SetText(nbase::UTF8ToUTF16(m_uinfo.birthdate)); //生日
 		//if (m_uinfo.ExistValue(nim::kUserNameCardKeyMobile))
-		//	phone_label->SetText(nbase::UTF8ToUTF16(m_uinfo.GetMobile())); //手机
+		phone_label->SetText(nbase::UTF8ToUTF16(m_uinfo.mobile)); //手机
 		//if (m_uinfo.ExistValue(nim::kUserNameCardKeyEmail))
 		//	email_label->SetText(nbase::UTF8ToUTF16(m_uinfo.GetEmail())); //邮箱
 		//if (m_uinfo.ExistValue(nim::kUserNameCardKeySignature))
@@ -722,7 +692,7 @@ namespace nim_comp
 	void ProfileBox::SetShowName()
 	{
 		UserService* user_service = UserService::GetInstance();
-		std::wstring show_name = user_service->GetUserName(m_uinfo.id);
+		std::wstring show_name = user_service->GetUserName(m_uinfo.profileid);
 		show_name_label->SetText(show_name);
 		ui::MutiLanSupport* mls = ui::MutiLanSupport::GetInstance();
 		std::wstring title = nbase::StringPrintf(mls->GetStringViaID(L"STRID_PROFILE_FORM_WHOSE_NAMECARD").c_str(), show_name.c_str());
@@ -730,7 +700,7 @@ namespace nim_comp
 
 		if (user_type == nim::kNIMFriendFlagNormal) //好友
 		{
-			std::wstring alias = user_service->GetFriendAlias(m_uinfo.id);
+			std::wstring alias = user_service->GetFriendAlias(m_uinfo.profileid);
 
 			alias_box->SetVisible(true); //可以设置备注名
 			if (!alias_edit->IsFocused())
@@ -739,7 +709,7 @@ namespace nim_comp
 			if (!alias.empty())
 			{
 				nickname_label->SetVisible(true); //账号下面显示昵称
-				std::wstring nickname = nbase::StringPrintf(mls->GetStringViaID(L"STRID_PROFILE_FORM_NICKNAME_").c_str(), user_service->GetUserName(m_uinfo.id, false).c_str());
+				std::wstring nickname = nbase::StringPrintf(mls->GetStringViaID(L"STRID_PROFILE_FORM_NICKNAME_").c_str(), user_service->GetUserName(m_uinfo.profileid, false).c_str());
 				nickname_label->SetText(nickname);
 			}
 			else

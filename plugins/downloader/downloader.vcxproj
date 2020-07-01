@@ -157,19 +157,21 @@
     <ClInclude Include="DownloadManager.h" />
     <ClInclude Include="DownloadManagerImpl.h" />
     <ClInclude Include="DownloadTask.h" />
+    <ClInclude Include="DownloadTaskGroup.h" />
+    <ClInclude Include="DownloadTaskGroupImpl.h" />
     <ClInclude Include="DownloadTaskImpl.h" />
     <ClInclude Include="MultipartByteRangesParser.h" />
     <ClInclude Include="ScopedMutex.h" />
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="TaskGroup.h" />
-    <ClInclude Include="TaskGroupImpl.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DownloadManager.cpp" />
     <ClCompile Include="DownloadManagerImpl.cpp" />
     <ClCompile Include="DownloadTask.cpp" />
+    <ClCompile Include="DownloadTaskGroup.cpp" />
+    <ClCompile Include="DownloadTaskGroupImpl.cpp" />
     <ClCompile Include="DownloadTaskImpl.cpp" />
     <ClCompile Include="MultipartByteRangesParser.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -178,8 +180,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TaskGroup.cpp" />
-    <ClCompile Include="TaskGroupImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\pthread\pthread.vcxproj">

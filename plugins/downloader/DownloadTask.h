@@ -12,7 +12,7 @@ namespace hotpatch
 DOWNLOAD_MANAGER_START
 
 //-----------------------------------------------------------------
-class TaskGroup;
+class DownloadTaskGroup;
 class DownloadTask
 {
 public:
@@ -20,7 +20,7 @@ public:
 	~DownloadTask();
 
 	friend class ThreadTaskQueue;
-	friend class TaskGroupImpl;
+	friend class DownloadTaskGroupImpl;
 	friend class DownloadManagerImpl;
 	friend class hotpatch::HotPatchInternal;
 

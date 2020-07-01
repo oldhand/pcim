@@ -63,11 +63,11 @@ void LoginManager::SetProfileInfo(const Rest::Profile info){
 	profile_info_ = info;
 }
 
-bool LoginManager::IsEqual(const std::string& account)
+bool LoginManager::IsEqual(const std::string& profileid)
 {
-	std::string new_account = account;
-	nbase::LowerString(new_account);
-	return account_ == new_account;
+	std::string new_profileid = profileid;
+	nbase::LowerString(new_profileid);
+	return profileid_ == new_profileid;
 }
 
 void LoginManager::SetPassword( const std::string &password )

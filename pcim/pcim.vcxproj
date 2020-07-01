@@ -129,7 +129,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;__WINDOWS__;__x86_64__;__SUPPORT_XP__;WITH_ENCRYPT;TIXML_USE_STL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>.\;..\;..\plugins\;..\plugins\cef\cef_module;..\plugins\cef\cef_wrapper\;..\plugins\ui_component\;..\plugins\openssl\include\;..\plugins\jsoncpp\include\;..\plugins\cef_wrapper;..\plugins\crypto++\cryptopp\;..\plugins\cpp_wrapper_util\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\;..\plugins\;..\plugins\cef\cef_module;..\plugins\cef\cef_wrapper\;..\plugins\ui_component\;..\plugins\openssl\include\;..\plugins\jsoncpp\include\;..\plugins\cef_wrapper;..\plugins\crypto++\cryptopp\;..\plugins\cpp_wrapper_util\;..\plugins\pthread;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -490,6 +490,9 @@
     </ProjectReference>
     <ProjectReference Include="..\plugins\tinyxml\tinyxml_lib.vcxproj">
       <Project>{c406daec-0886-4771-8dea-9d7329b46cc1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\plugins\uploader\uploader.vcxproj">
+      <Project>{708f18dc-bc21-4031-a202-e33d4aa10429}</Project>
     </ProjectReference>
     <ProjectReference Include="..\plugins\utils\utils.vcxproj">
       <Project>{0dc4e34f-eaf0-44bf-8b48-6b800949beb3}</Project>

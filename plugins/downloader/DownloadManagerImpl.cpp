@@ -1,9 +1,9 @@
 #include "DownloadManagerImpl.h"
 #include "DownloadTaskImpl.h"
-#include "TaskGroupImpl.h"
+#include "DownloadTaskGroupImpl.h"
 #include "curl/curl.h"
 #include "DownloadTask.h"
-#include "TaskGroup.h"
+#include "DownloadTaskGroup.h"
 
 #include "ScopedMutex.h"
 #include "sqlite3.h"
@@ -81,7 +81,7 @@ void ThreadTaskQueue::FetchFinisedTasks(ThreadTaskQueue& rQueue)
 		for (std::vector<TaskPtr>::iterator it = _taskQueue.begin(); it != _taskQueue.end(); )
 		{
 			TaskPtr task = *it;
-			DownloadTaskImpl* pTaskImpl = TASK_IMPL(task->_pImpl);
+			DownloadTaskImpl* pTaskImpl = DOWNLOAD_TASK_IMPL(task->_pImpl);
 			if (pTaskImpl->_eStatus == CURL_TERMINATED)
 			{
 				rQueue.AddTask(task);
@@ -110,13 +110,13 @@ void ThreadTaskQueue::EmitFinishedEvents()
 		for (std::vector<TaskPtr>::iterator it = _taskQueue.begin(); it != _taskQueue.end(); )
 		{
 			TaskPtr task = *it;
-			DownloadTaskImpl* pTaskImpl = TASK_IMPL(task->_pImpl);
+			DownloadTaskImpl* pTaskImpl = DOWNLOAD_TASK_IMPL(task->_pImpl);
 			if (pTaskImpl->_boolMarks._bDownLoadOk)
 			{
 				//emit events
 				if (pTaskImpl->_pDownloadBufferOK)
 				{
-					pTaskImpl->_pDownloadBufferOK(pTaskImpl->_memory.c_str(), pTaskImpl->_memory.size());
+					pTaskImpl->_pDownloadBufferOK(pTaskImpl->_memory.c_str(), (int)pTaskImpl->_memory.size());
 				}
 
 				if (pTaskImpl->_pDownloadOK)
@@ -366,7 +366,7 @@ void DownloadManagerImpl::_ThreadExcute()
 		while (pTask != nullptr)
 		{
 			_runningQueue->AddTask(pTask);
-			TASK_IMPL(pTask->_pImpl)->Start();
+			DOWNLOAD_TASK_IMPL(pTask->_pImpl)->Start();
 			_taskQueue->FetchTask(pTask);
 		}
 
@@ -405,7 +405,7 @@ void DownloadManagerImpl::_ThreadExcute()
 			if (CURLMSG_DONE == pMsg->msg)
 			{
 				DownloadTask* task = _httpHandlerMap[pMsg->easy_handle];
-				DownloadTaskImpl* pImpl = TASK_IMPL(task->_pImpl);
+				DownloadTaskImpl* pImpl = DOWNLOAD_TASK_IMPL(task->_pImpl);
 				if (pMsg->data.result == CURLE_OK)
 				{
 					pImpl->Done(true);
@@ -453,8 +453,8 @@ void DownloadManagerImpl::AddDownLoadTask(TaskPtr pTask)
 void DownloadManagerImpl::AddTaskGroup(TaskGroupPtr pTaskGroup)
 {
 	_taskGroups.push_back(pTaskGroup);
-	TaskGroupImpl* pTaskGroupImpl = TASKGROUP_IMPL(pTaskGroup->_pImpl);
-	for (int i = 0, n = pTaskGroupImpl->_tasks.size(); i < n; ++i)
+	DownloadTaskGroupImpl* pTaskGroupImpl = DOWNLOAD_TASKGROUP_IMPL(pTaskGroup->_pImpl);
+	for (int i = 0, n = (int)pTaskGroupImpl->_tasks.size(); i < n; ++i)
 	{
 		_taskQueue->AddTask(pTaskGroupImpl->_tasks[i]);
 	}
@@ -480,7 +480,7 @@ void DownloadManagerImpl::UpdateTaskGroup()
 	{
 		bool bDone = true;
 		double fAllPercent = 0;;
-		TaskGroupImpl* pTaskGroupImpl = TASKGROUP_IMPL((*taskGroup)->_pImpl);
+		DownloadTaskGroupImpl* pTaskGroupImpl = DOWNLOAD_TASKGROUP_IMPL((*taskGroup)->_pImpl);
 		for (std::map<uint64_t, bool>::iterator iter = pTaskGroupImpl->_taskIdFinishedMap.begin();
 			 iter != pTaskGroupImpl->_taskIdFinishedMap.end(); ++iter)
 		{
@@ -510,14 +510,14 @@ void DownloadManagerImpl::UpdateTaskGroup()
 TaskPtr DownloadManagerImpl::CreateDownLoadTask(const std::string& rUrl)
 {
 	TaskPtr task = TaskPtr(new libdlmgr::DownloadTask);
-	DownloadTaskImpl* pImpl = TASK_IMPL(task->_pImpl);
+	DownloadTaskImpl* pImpl = DOWNLOAD_TASK_IMPL(task->_pImpl);
 	pImpl->_pMgr = _pOwner;
 	pImpl->_iTaskId = _iNextTaskId++;
 	pImpl->_pGroup = nullptr;
 
 	pImpl->_iFileValidTime = rand() % (592001) + 2000000; //random time
 
-	int index = rUrl.rfind('/');
+	int index = (int)rUrl.rfind('/');
 	std::string filename = rUrl.substr(index + 1, rUrl.length() - index);
 
 	pImpl->Init(rUrl, filename);

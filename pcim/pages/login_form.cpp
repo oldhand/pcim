@@ -12,7 +12,7 @@
 
 
 using namespace ui;
-const std::wstring LoginForm::kClassName = L"Login";
+const LPCTSTR LoginForm::kClassName = L"Login";
 
 LoginForm::LoginForm()
 {
